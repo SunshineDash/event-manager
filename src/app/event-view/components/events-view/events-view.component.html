@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="menu-container">
+    <div class="menu-search-container">
+      <input #searchInput type="search" placeholder="Search" class="search" (change)="search(searchInput.value)">
+    </div>
+    <div class="menu-controls">
+      <div class="create-button">
+        <button mat-flat-button class="create-button" (click)="createEvent()">New</button>
+      </div>
+      <select #statusSelect class="select" (change)="filterByStatus(statusSelect.value)">
+        <option [value]="statusAll">{{statusAll}}</option>
+        <option *ngFor="let status of statusValues" [value]="status">{{status}}</option>
+      </select>
+      <div class="sort-container">
+        <span>Sort By:</span>
+        <select class="select" (change)="onSortValueChange(sortBySelect.value)" #sortBySelect>
+          <option [value]="sortValues.Index">{{sortValues.Index}}</option>
+          <option [value]="sortValues.Date">{{sortValues.Date}}</option>
+          <option [value]="sortValues.Priority">{{sortValues.Priority}}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="cards-container">
+    <ng-container *ngIf="eventList">
+      <mat-card *ngFor="let event of eventList" appearance="outlined" class="card">
+        <mat-card-header>
+          <mat-card-title-group>
+            <mat-card-title>
+              <a class="link" [routerLink]="'/events/' + event.id">
+                {{event.title}}
+              </a>
+            </mat-card-title>
+            <mat-card-subtitle>{{event.date | date:'yyyy-MM-dd'}}</mat-card-subtitle>
+            <button mat-icon-button>
+              <mat-icon (click)="openConformationDialog(event)">delete</mat-icon>
+            </button>
+          </mat-card-title-group>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-chip-set>
+            <mat-chip disableRipple>{{event.priority}}</mat-chip>
+            <mat-chip disableRipple>{{event.status}}</mat-chip>
+          </mat-chip-set>
+        </mat-card-content>
+      </mat-card>
+    </ng-container>
+  </div>
+</div>
