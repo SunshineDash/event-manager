@@ -25,14 +25,14 @@
             <mat-form-field appearance="fill">
               <mat-label>Priority</mat-label>
               <mat-select required formControlName="priority" [value]="event.priority">
-                <mat-option [value]="PriorityEnum.High">
-                  {{PriorityEnum[PriorityEnum.High]}}
+                <mat-option [value]="PriorityEnum.Low">
+                  {{PriorityEnum[PriorityEnum.Low]}}
                 </mat-option>
                 <mat-option [value]="PriorityEnum.Medium">
                   {{PriorityEnum[PriorityEnum.Medium]}}
                 </mat-option>
-                <mat-option [value]="PriorityEnum.Low">
-                  {{PriorityEnum[PriorityEnum.Low]}}
+                <mat-option [value]="PriorityEnum.High">
+                  {{PriorityEnum[PriorityEnum.High]}}
                 </mat-option>
               </mat-select>
             </mat-form-field>

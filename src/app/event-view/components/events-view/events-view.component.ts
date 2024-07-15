@@ -26,12 +26,15 @@ export class EventsViewComponent implements OnInit {
   readonly StatusEnum = StatusEnum;
 
   readonly sortValues = {
+    Id: 'id',
     Index: 'Index',
     Priority: 'Priority',
     Date: 'Date'
   };
 
   readonly statusAll = 'Any Status';
+
+  asc = false;
 
   currentPageIndex = 0;
 
@@ -47,7 +50,7 @@ export class EventsViewComponent implements OnInit {
 
   searchString = '';
 
-  selectedSort = this.sortValues.Index;
+  selectedSort = this.sortValues.Id;
 
   selectedStatus = '';
 
@@ -89,6 +92,11 @@ export class EventsViewComponent implements OnInit {
 
   sort(value: string): void {
     this.selectedSort = value.toLowerCase();
+    this.getPage(this.currentPageIndex);
+  }
+
+  changeSortOrder(): void {
+    this.asc = !this.asc;
     this.getPage(this.currentPageIndex);
   }
 
@@ -138,7 +146,7 @@ export class EventsViewComponent implements OnInit {
       recordsPerPage: RECORDS_PER_PAGE,
       titleSearch: this.searchString,
       statusFilter: this.selectedStatus,
-      sort: this.selectedSort
+      sort: this.asc ? this.selectedSort : `-${this.selectedSort}`
     }));
   }
 }

@@ -19,10 +19,13 @@
       <div class="sort-container">
         <span>Sort By:</span>
         <select #sortBySelect class="select" (change)="sort(sortBySelect.value)">
-          <option [value]="sortValues.Index">{{sortValues.Index}}</option>
+          <option [value]="sortValues.Id">{{sortValues.Index}}</option>
           <option [value]="sortValues.Date">{{sortValues.Date}}</option>
           <option [value]="sortValues.Priority">{{sortValues.Priority}}</option>
         </select>
+        <button mat-icon-button (click)="changeSortOrder()">
+          <mat-icon>swap_vert</mat-icon>
+        </button>
       </div>
     </div>
   </div>
