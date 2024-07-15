@@ -5,16 +5,35 @@ import { EventModel } from '../models/event.model';
 
 export interface EventState {
   events: EventModel[];
+  event: EventModel,
+  pagesCount: number;
+  firstPageIndex: number;
+  prevPageIndex: number;
+  nextPageIndex: number;
+  lastPageIndex: number;
 }
 
 export const defaultEventState: EventState = {
-  events: []
+  events: [],
+  event: new EventModel(),
+  pagesCount: 0,
+  firstPageIndex: 0,
+  prevPageIndex: 0,
+  nextPageIndex: 0,
+  lastPageIndex: 0
 };
 
 export const eventReducer = createReducer(
   defaultEventState,
-  on(EventActions.getEventsSuccess, (state, { events }) => ({...state, events})),
-  on(EventActions.createEventSuccess, (state,{ event }) => ({ ...state, events: [...state.events, event]})),
-  on(EventActions.updateEventSuccess, (state,{ event }) => ({ ...state, events: state.events.map(item => item.id !== event.id ? item : event )})),
-  on(EventActions.deleteEventSuccess, (state,{ event }) => ({...state, events: state.events.filter(item => item.id !== event.id)})),
+  on(EventActions.getEventsPageSuccess, (state, { page }) =>  ({
+    ...state,
+    events: page.data,
+    pagesCount: page.pages,
+    firstPageIndex: page.first,
+    prevPageIndex: page.prev,
+    nextPageIndex: page.next,
+    lastPageIndex: page.last,
+  })),
+  on(EventActions.getEventSuccess, (state, { event }) => ({ ...state, event })),
+  on(EventActions.updateEventSuccess, (state, { event }) => ({ ...state, event })),
 );

@@ -11,7 +11,7 @@ import { PriorityEnum } from '../../../core/enums/priority.enum';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CreateEventDialogComponent {
-  readonly priorities = Object.values(PriorityEnum);
+  readonly PriorityEnum = PriorityEnum;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: { formGroup: FormGroup }) { }
 }

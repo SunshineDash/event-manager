@@ -4,12 +4,12 @@ import { EventState } from './event.reducer';
 
 export const selectEventsState = createFeatureSelector<EventState>('events');
 
-export const selectEvents = createSelector(
+export const selectState = createSelector(
   selectEventsState,
-  (state: EventState) => state.events
+  (state: EventState) => state
 );
 
-export const selectEventById = (id: string) => createSelector(
+export const selectDetailsEvent = () => createSelector(
   selectEventsState,
-  (state: EventState) =>  state.events.find(x => x.id === id)
+  (state: EventState) =>  state.event
 );

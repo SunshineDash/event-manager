@@ -10,7 +10,8 @@ import { EventActions } from '../../../core/store/event.actions';
 import { EventModel } from '../../../core/models/event.model';
 import { EventState } from '../../../core/store/event.reducer';
 import { PriorityEnum } from '../../../core/enums/priority.enum';
-import { selectEvents } from '../../../core/store/event.selector';
+import { RECORDS_PER_PAGE } from '../../../core/constants/records-per-page.const';
+import { selectState } from '../../../core/store/event.selector';
 import { StatusEnum } from '../../../core/enums/status.enum';
 
 @Component({
@@ -20,7 +21,9 @@ import { StatusEnum } from '../../../core/enums/status.enum';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EventsViewComponent implements OnInit {
-  readonly priorityValues = Object.values(PriorityEnum);
+  readonly PriorityEnum = PriorityEnum;
+
+  readonly StatusEnum = StatusEnum;
 
   readonly sortValues = {
     Index: 'Index',
@@ -28,19 +31,25 @@ export class EventsViewComponent implements OnInit {
     Date: 'Date'
   };
 
-  readonly statusValues = Object.values(StatusEnum);
-
   readonly statusAll = 'Any Status';
+
+  currentPageIndex = 0;
 
   events = new Array<EventModel>();
 
-  eventList = new Array<EventModel>();
+  firstPageIndex = 0;
+
+  lastPageIndex = 0;
+
+  nextPageIndex = 0;
+
+  prevPageIndex = 0;
 
   searchString = '';
 
   selectedSort = this.sortValues.Index;
 
-  selectedStatus = this.statusAll;
+  selectedStatus = '';
 
   constructor(
     private cdr: ChangeDetectorRef,
@@ -50,78 +59,46 @@ export class EventsViewComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.store.pipe(select(selectEvents), takeUntilDestroyed(this.destroyRef)).subscribe(
-      (events) => {
-        this.events = events;
-        this.filter();
-        this.sort(true);
+    this.store.pipe(select(selectState), takeUntilDestroyed(this.destroyRef)).subscribe(
+      (state) => {
+        if (!state) {
+          return;
+        }
+
+        this.events = state.events;
+        this.firstPageIndex = state.firstPageIndex ?? 0;
+        this.lastPageIndex = state.lastPageIndex ? state.lastPageIndex : 1;
+        this.nextPageIndex = state.nextPageIndex ?? 0;
+        this.prevPageIndex = state.prevPageIndex ?? 0;
+        this.currentPageIndex = (state.prevPageIndex ?? 0) + this.firstPageIndex;
+
         this.cdr.detectChanges();
       }
     );
   }
 
   search(value: string): void {
-    this.searchString = value.toLowerCase();
-    this.filter();
-    this.sort(true);
+    this.searchString = value;
+    this.getPage(this.currentPageIndex);
   }
 
-  filterByStatus(value: string): void {
+  filter(value: string): void {
     this.selectedStatus = value;
-    this.filter();
-    this.sort(true);
+    this.getPage(this.currentPageIndex);
   }
 
-  filter(): void {
-    this.eventList = this.events.filter(event =>
-      event.title.toLowerCase().includes(this.searchString) && (this.selectedStatus === this.statusAll || event.status === this.selectedStatus)
-    );
+  sort(value: string): void {
+    this.selectedSort = value.toLowerCase();
+    this.getPage(this.currentPageIndex);
   }
 
-  onSortValueChange(value: string): void {
-    this.selectedSort = value;
-    this.sort();
-  }
-
-  sort(isAfterFilter = false): void {
-    if (this.selectedSort === this.sortValues.Priority) {
-      this.sortByPriority();
-
-      return;
-    }
-
-    if (this.selectedSort === this.sortValues.Date) {
-      this.sortByDate();
-
-      return;
-    }
-
-    if (isAfterFilter) {
-      return;
-    }
-
-    this.filter();
-  }
-
-  sortByPriority(): void {
-    this.eventList = [...this.eventList].sort((a: EventModel, b: EventModel) =>
-      (this.priorityValues.indexOf(b.priority) - this.priorityValues.indexOf(a.priority))
-    );
-  }
-
-  sortByDate(): void {
-    this.eventList = [...this.eventList].sort(
-      (a: EventModel, b: EventModel) => Date.parse(b.date) - Date.parse(a.date)
-    );
-  }
-
-  createEvent(): void {
+  create(): void {
     const formGroup = new FormGroup({
       title: new FormControl(''),
       description: new FormControl(''),
       date: new FormControl(''),
       priority: new FormControl(),
-      status: new FormControl(StatusEnum.INPROGRESS)
+      status: new FormControl(StatusEnum.Unfinished)
     });
 
     const modalDialog = this.matDialog.open(CreateEventDialogComponent, {
@@ -130,14 +107,38 @@ export class EventsViewComponent implements OnInit {
 
     modalDialog.afterClosed().pipe(takeUntilDestroyed(this.destroyRef)).subscribe(result => {
       if (result) {
-        this.store.dispatch(EventActions.createEvent({event: result as EventModel}));
+        this.store.dispatch(EventActions.createEvent({
+          event: result as EventModel,
+          pageIndex: this.currentPageIndex,
+          recordsPerPage: RECORDS_PER_PAGE,
+          titleSearch: this.searchString,
+          statusFilter: this.selectedStatus,
+          sort: this.selectedSort
+        }));
       }
     });
   }
 
   openConformationDialog(event: EventModel): void {
     this.matDialog.open(DeleteEventDialogComponent, {
-      data: { event: event },
+      data: {
+        event: event,
+        pageIndex: this.currentPageIndex,
+        recordsPerPage: RECORDS_PER_PAGE,
+        titleSearch: this.searchString,
+        statusFilter: this.selectedStatus,
+        sort: this.selectedSort
+      },
     });
+  }
+
+  getPage(pageIndex: number): void {
+    this.store.dispatch(EventActions.getEventsPage({
+      pageIndex: pageIndex,
+      recordsPerPage: RECORDS_PER_PAGE,
+      titleSearch: this.searchString,
+      statusFilter: this.selectedStatus,
+      sort: this.selectedSort
+    }));
   }
 }

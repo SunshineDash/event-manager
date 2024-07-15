@@ -1,5 +1,4 @@
-import { ActivatedRoute } from '@angular/router';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DestroyRef, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -8,7 +7,7 @@ import { EventActions } from '../../../core/store/event.actions';
 import { EventModel } from '../../../core/models/event.model';
 import { EventState } from '../../../core/store/event.reducer';
 import { PriorityEnum } from '../../../core/enums/priority.enum';
-import { selectEventById } from '../../../core/store/event.selector';
+import { selectDetailsEvent } from '../../../core/store/event.selector';
 import { StatusEnum } from '../../../core/enums/status.enum';
 
 @Component({
@@ -17,10 +16,10 @@ import { StatusEnum } from '../../../core/enums/status.enum';
   styleUrl: './event-details.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class EventDetailsComponent {
-  readonly priorityValues = Object.values(PriorityEnum);
+export class EventDetailsComponent implements OnInit {
+  readonly PriorityEnum = PriorityEnum;
 
-  readonly statusValues = Object.values(StatusEnum);
+  readonly StatusEnum = StatusEnum;
 
   event = new EventModel();
 
@@ -35,20 +34,28 @@ export class EventDetailsComponent {
     status: new FormControl()
   });
 
-  constructor(private route: ActivatedRoute, private store: Store<EventState>) {
-    store.select(selectEventById(route.snapshot.paramMap.get('id') ?? ''))
-      .pipe(takeUntilDestroyed()).subscribe(item => {
-      if (!item) {
+  constructor(
+    private cdr: ChangeDetectorRef,
+    private destroyRef: DestroyRef,
+    private store: Store<EventState>
+  ) { }
+
+  ngOnInit(): void {
+    this.store.select(selectDetailsEvent())
+      .pipe(takeUntilDestroyed(this.destroyRef)).subscribe(event => {
+      if (!event) {
         return;
       }
 
-      this.event = item;
-      this.formGroup.controls.id.setValue(item.id);
-      this.formGroup.controls.title.setValue(item.title);
-      this.formGroup.controls.description.setValue(item.description);
-      this.formGroup.controls.date.setValue(item.date);
-      this.formGroup.controls.priority.setValue(item.priority);
-      this.formGroup.controls.status.setValue(item.status);
+      this.event = event;
+      this.formGroup.controls.id.setValue(event.id);
+      this.formGroup.controls.title.setValue(event.title);
+      this.formGroup.controls.description.setValue(event.description);
+      this.formGroup.controls.date.setValue(event.date);
+      this.formGroup.controls.priority.setValue(event.priority);
+      this.formGroup.controls.status.setValue(event.status);
+
+      this.cdr.detectChanges();
     });
   }
 
@@ -60,5 +67,17 @@ export class EventDetailsComponent {
 
   switchMode(): void {
     this.isEditMode = !this.isEditMode;
+    this.cleanForm();
+  }
+
+  cleanForm(): void {
+    if (!this.isEditMode) {
+      this.formGroup.controls.id.setValue(this.event.id);
+      this.formGroup.controls.title.setValue(this.event.title);
+      this.formGroup.controls.description.setValue(this.event.description);
+      this.formGroup.controls.date.setValue(this.event.date);
+      this.formGroup.controls.priority.setValue(this.event.priority);
+      this.formGroup.controls.status.setValue(this.event.status);
+    }
   }
 }

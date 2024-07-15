@@ -4,12 +4,12 @@
   </header>
   <form [formGroup]="data.formGroup">
     <div class="dialog-form">
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="fill" class="double-column-field">
         <mat-label>Title</mat-label>
         <input matInput placeholder="Title" formControlName="title" required>
       </mat-form-field>
 
-      <mat-form-field appearance="fill" style="grid-column: span 2;">
+      <mat-form-field appearance="fill" class="double-column-field">
         <mat-label>Description</mat-label>
         <textarea  matInput placeholder="Description" formControlName="description" required></textarea>
       </mat-form-field>
@@ -25,8 +25,14 @@
       <mat-form-field appearance="fill">
         <mat-label>Priority</mat-label>
         <mat-select formControlName="priority" required>
-          <mat-option *ngFor="let priority of priorities" [value]="priority">
-            {{priority}}
+          <mat-option [value]="PriorityEnum.High">
+            {{PriorityEnum[PriorityEnum.High]}}
+          </mat-option>
+          <mat-option [value]="PriorityEnum.Medium">
+            {{PriorityEnum[PriorityEnum.Medium]}}
+          </mat-option>
+          <mat-option [value]="PriorityEnum.Low">
+            {{PriorityEnum[PriorityEnum.Low]}}
           </mat-option>
         </mat-select>
       </mat-form-field>

@@ -20,6 +20,10 @@
   justify-content: space-between;
 }
 
+.double-column-field {
+  grid-column: span 2;
+}
+
 .dialog-footer {
   display: flex;
   justify-content: end;

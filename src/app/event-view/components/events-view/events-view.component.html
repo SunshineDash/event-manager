@@ -5,15 +5,20 @@
     </div>
     <div class="menu-controls">
       <div class="create-button">
-        <button mat-flat-button class="create-button" (click)="createEvent()">New</button>
+        <button mat-flat-button class="create-button" (click)="create()">New</button>
       </div>
-      <select #statusSelect class="select" (change)="filterByStatus(statusSelect.value)">
-        <option [value]="statusAll">{{statusAll}}</option>
-        <option *ngFor="let status of statusValues" [value]="status">{{status}}</option>
+      <select #statusSelect class="select" (change)="filter(statusSelect.value)">
+        <option value="">{{statusAll}}</option>
+        <option [value]="StatusEnum.Unfinished">
+          {{StatusEnum[StatusEnum.Unfinished]}}
+        </option>
+        <option [value]="StatusEnum.Finished">
+          {{StatusEnum[StatusEnum.Finished]}}
+        </option>
       </select>
       <div class="sort-container">
         <span>Sort By:</span>
-        <select class="select" (change)="onSortValueChange(sortBySelect.value)" #sortBySelect>
+        <select #sortBySelect class="select" (change)="sort(sortBySelect.value)">
           <option [value]="sortValues.Index">{{sortValues.Index}}</option>
           <option [value]="sortValues.Date">{{sortValues.Date}}</option>
           <option [value]="sortValues.Priority">{{sortValues.Priority}}</option>
@@ -22,8 +27,8 @@
     </div>
   </div>
   <div class="cards-container">
-    <ng-container *ngIf="eventList">
-      <mat-card *ngFor="let event of eventList" appearance="outlined" class="card">
+    <ng-container *ngIf="events">
+      <mat-card *ngFor="let event of events" appearance="outlined" class="card">
         <mat-card-header>
           <mat-card-title-group>
             <mat-card-title>
@@ -32,18 +37,24 @@
               </a>
             </mat-card-title>
             <mat-card-subtitle>{{event.date | date:'yyyy-MM-dd'}}</mat-card-subtitle>
-            <button mat-icon-button>
-              <mat-icon (click)="openConformationDialog(event)">delete</mat-icon>
+            <button mat-icon-button (click)="openConformationDialog(event)">
+              <mat-icon>delete</mat-icon>
             </button>
           </mat-card-title-group>
         </mat-card-header>
         <mat-card-content>
           <mat-chip-set>
-            <mat-chip disableRipple>{{event.priority}}</mat-chip>
-            <mat-chip disableRipple>{{event.status}}</mat-chip>
+            <mat-chip disableRipple>{{PriorityEnum[event.priority]}}</mat-chip>
+            <mat-chip disableRipple>{{StatusEnum[event.status]}}</mat-chip>
           </mat-chip-set>
         </mat-card-content>
       </mat-card>
     </ng-container>
+  </div>
+  <div class="nav-container">
+    <button mat-button [disabled]="firstPageIndex === currentPageIndex" (click)="getPage(firstPageIndex)">First</button>
+    <button mat-button [disabled]="!prevPageIndex" (click)="getPage(prevPageIndex)">Prev</button>
+    <button mat-button [disabled]="!nextPageIndex" (click)="getPage(nextPageIndex)">Next</button>
+    <button mat-button [disabled]="lastPageIndex === currentPageIndex" (click)="getPage(lastPageIndex)">Last</button>
   </div>
 </div>

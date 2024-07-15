@@ -10,15 +10,30 @@ import { EventActions } from './event.actions';
 export class EventEffects {
   constructor(private actions$: Actions, private eventApiService: EventApiService) {}
 
-  loadEvents$ = createEffect(() =>
+  getEventsPage$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(EventActions.getEvents),
-      exhaustMap(() =>
-        this.eventApiService.getAll().pipe(
-          map(events => EventActions.getEventsSuccess({events})),
+      ofType(EventActions.getEventsPage),
+      exhaustMap(action =>
+        this.eventApiService.getPage(action.pageIndex, action.recordsPerPage, action.titleSearch, action.statusFilter, action.sort).pipe(
+          map(page => EventActions.getEventsPageSuccess({ page })),
           catchError(error => {
             console.log(error);
-            return of(EventActions.getEventsFailure(error));
+            return of(EventActions.getEventsPageFailure(error));
+          })
+        )
+      )
+    )
+  );
+
+  getEvent$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(EventActions.getEvent),
+      exhaustMap(action =>
+        this.eventApiService.get(action.id).pipe(
+          map(event => EventActions.getEventSuccess({ event })),
+          catchError(error => {
+            console.log(error);
+            return of(EventActions.getEventFailure(error));
           })
         )
       )
@@ -30,7 +45,13 @@ export class EventEffects {
       ofType(EventActions.createEvent),
       exhaustMap(action =>
         this.eventApiService.create(action.event).pipe(
-          map((event: EventModel) => EventActions.createEventSuccess({event})),
+          map(() => EventActions.getEventsPage({
+            pageIndex: action.pageIndex,
+            recordsPerPage: action.recordsPerPage,
+            titleSearch: action.titleSearch,
+            statusFilter: action.statusFilter,
+            sort: action.sort
+          })),
           catchError(error => {
             console.log(error);
             return of(EventActions.createEventFailure(error));
@@ -60,7 +81,13 @@ export class EventEffects {
       ofType(EventActions.deleteEvent),
       exhaustMap(action =>
         this.eventApiService.delete(action.id).pipe(
-          map((event: EventModel) => EventActions.deleteEventSuccess({event})),
+          map(() => EventActions.getEventsPage({
+            pageIndex: action.pageIndex,
+            recordsPerPage: action.recordsPerPage,
+            titleSearch: action.titleSearch,
+            statusFilter: action.statusFilter,
+            sort: action.sort
+          })),
           catchError(error => {
             console.log(error);
             return of(EventActions.deleteEventFailure(error));
