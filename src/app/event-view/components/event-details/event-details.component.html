@@ -1,0 +1,75 @@
+<ng-container *ngIf="event">
+  <div class="card-container">
+    <mat-card appearance="outlined" class="card">
+      <ng-container *ngIf="isEditMode; else viewBlock">
+        <mat-card-content>
+          <form class="card-form" [formGroup]="formGroup">
+            <mat-form-field appearance="fill">
+              <mat-label>Title</mat-label>
+              <input matInput placeholder="Title" required formControlName="title" [value]="event.title">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Description</mat-label>
+              <textarea  matInput placeholder="Description" required formControlName="description" [value]="event.description"></textarea>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Date</mat-label>
+              <input matInput formControlName="date" [matDatepicker]="picker">
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Priority</mat-label>
+              <mat-select required formControlName="priority" [value]="event.priority">
+                <mat-option *ngFor="let priority of priorityValues" [value]="priority">
+                  {{priority}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Status</mat-label>
+              <mat-select required formControlName="status" [value]="event.status">
+                <mat-option *ngFor="let status of statusValues" [value]="status">
+                  {{status}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <div class="card-form-footer">
+              <button mat-stroked-button (click)="switchMode()">Close</button>
+              <button mat-flat-button type="submit" [disabled]="!formGroup.valid || !formGroup.dirty" (click)="onSubmit()">Submit</button>
+            </div>
+          </form>
+        </mat-card-content>
+      </ng-container>
+
+      <ng-template #viewBlock>
+        <mat-card-header class="card-header">
+          <mat-card-title-group>
+            <mat-card-title>{{event.title}}</mat-card-title>
+            <mat-card-subtitle>{{event.date | date:'yyyy-MM-dd'}}</mat-card-subtitle>
+            <button mat-icon-button (click)="switchMode()">
+              <mat-icon>edit</mat-icon>
+            </button>
+          </mat-card-title-group>
+        </mat-card-header>
+
+        <mat-card-content>
+          <p>{{event.description}}</p>
+        </mat-card-content>
+
+        <mat-card-footer class="card-footer">
+          <mat-chip-set>
+            <mat-chip>{{event.priority}}</mat-chip>
+            <mat-chip>{{event.status}}</mat-chip>
+          </mat-chip-set>
+        </mat-card-footer>
+      </ng-template>
+    </mat-card>
+  </div>
+</ng-container>
