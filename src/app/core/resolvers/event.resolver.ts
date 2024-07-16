@@ -23,7 +23,6 @@ export class EventResolverService implements Resolve<any> {
   resolve(route: ActivatedRouteSnapshot): Observable<EventModel>|boolean {
     return this.apiService.get(route.params['id']).pipe(
       map(() => {
-        console.log(route.params['id']);
         this.store.dispatch(EventActions.getEvent({
           id: route.params['id']
         }));

@@ -9,7 +9,7 @@ export const selectState = createSelector(
   (state: EventState) => state
 );
 
-export const selectDetailsEvent = () => createSelector(
+export const selectDetailsEvent = createSelector(
   selectEventsState,
   (state: EventState) =>  state.event
 );

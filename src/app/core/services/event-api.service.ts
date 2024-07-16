@@ -23,23 +23,23 @@ export class EventApiService {
     const searchParams= new URLSearchParams();
 
     if (!!pageIndex) {
-      searchParams.append("_page", pageIndex.toString());
+      searchParams.append('_page', pageIndex.toString());
     }
 
     if (!!recordsPerPage) {
-      searchParams.append("_per_page", recordsPerPage.toString());
+      searchParams.append('_per_page', recordsPerPage.toString());
     }
 
     if (!!titleSearch) {
-      searchParams.append("title", titleSearch);
+      searchParams.append('title', titleSearch);
     }
 
     if (!!statusFilter) {
-      searchParams.append("status", statusFilter);
+      searchParams.append('status', statusFilter);
     }
 
     if (!!sort) {
-      searchParams.append("_sort", sort);
+      searchParams.append('_sort', sort);
     }
 
     const baseUrl = new URL(this.apiUrl);

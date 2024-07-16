@@ -1,7 +1,7 @@
 import { createActionGroup, props } from '@ngrx/store';
 
 import { EventModel } from '../models/event.model';
-import {PaginationResponseInterface} from "../interfaces/pagination-response.interface";
+import { PaginationResponseInterface } from '../interfaces/pagination-response.interface';
 
 export const EventActions = createActionGroup({
   source: 'Event',

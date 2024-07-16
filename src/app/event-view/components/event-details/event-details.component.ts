@@ -41,7 +41,7 @@ export class EventDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.store.select(selectDetailsEvent())
+    this.store.select(selectDetailsEvent)
       .pipe(takeUntilDestroyed(this.destroyRef)).subscribe(event => {
       if (!event) {
         return;

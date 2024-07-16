@@ -17,7 +17,7 @@ export class EventEffects {
         this.eventApiService.getPage(action.pageIndex, action.recordsPerPage, action.titleSearch, action.statusFilter, action.sort).pipe(
           map(page => EventActions.getEventsPageSuccess({ page })),
           catchError(error => {
-            console.log(error);
+            console.error(error);
             return of(EventActions.getEventsPageFailure(error));
           })
         )
@@ -32,7 +32,7 @@ export class EventEffects {
         this.eventApiService.get(action.id).pipe(
           map(event => EventActions.getEventSuccess({ event })),
           catchError(error => {
-            console.log(error);
+            console.error(error);
             return of(EventActions.getEventFailure(error));
           })
         )
@@ -53,7 +53,7 @@ export class EventEffects {
             sort: action.sort
           })),
           catchError(error => {
-            console.log(error);
+            console.error(error);
             return of(EventActions.createEventFailure(error));
           })
         )
@@ -68,7 +68,7 @@ export class EventEffects {
         this.eventApiService.update(action.event).pipe(
           map((event: EventModel) => EventActions.updateEventSuccess({event})),
           catchError(error => {
-            console.log(error);
+            console.error(error);
             return of(EventActions.updateEventFailure(error));
           })
         )
@@ -89,7 +89,7 @@ export class EventEffects {
             sort: action.sort
           })),
           catchError(error => {
-            console.log(error);
+            console.error(error);
             return of(EventActions.deleteEventFailure(error));
           })
         )

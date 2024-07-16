@@ -18,8 +18,8 @@ import { eventReducer } from './core/store/event.reducer';
     AppRoutingModule,
     BrowserModule,
     EventModule,
-    StoreModule.forRoot({events: eventReducer}),
-    EffectsModule.forRoot([EventEffects])
+    EffectsModule.forRoot([EventEffects]),
+    StoreModule.forRoot({events: eventReducer})
   ],
   providers: [
     provideHttpClient()
