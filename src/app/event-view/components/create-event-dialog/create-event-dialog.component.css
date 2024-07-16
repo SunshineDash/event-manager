@@ -1,0 +1,31 @@
+.dialog-content-wrapper {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+}
+
+.dialog-header {
+  display: flex;
+  height: 60px;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  padding-bottom: 20px;
+}
+
+.dialog-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  justify-content: space-between;
+}
+
+.double-column-field {
+  grid-column: span 2;
+}
+
+.dialog-footer {
+  display: flex;
+  justify-content: end;
+  gap: 8px;
+}

@@ -1,0 +1,46 @@
+<div class="dialog-content-wrapper">
+  <header class="dialog-header">
+    Create New Event
+  </header>
+  <form [formGroup]="data.formGroup">
+    <div class="dialog-form">
+      <mat-form-field appearance="fill" class="double-column-field">
+        <mat-label>Title</mat-label>
+        <input matInput placeholder="Title" formControlName="title" required>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="double-column-field">
+        <mat-label>Description</mat-label>
+        <textarea  matInput placeholder="Description" formControlName="description" required></textarea>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Date</mat-label>
+        <input matInput formControlName="date" required [matDatepicker]="picker" >
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Priority</mat-label>
+        <mat-select formControlName="priority" required>
+          <mat-option [value]="PriorityEnum.Low">
+            {{PriorityEnum[PriorityEnum.Low]}}
+          </mat-option>
+          <mat-option [value]="PriorityEnum.Medium">
+            {{PriorityEnum[PriorityEnum.Medium]}}
+          </mat-option>
+          <mat-option [value]="PriorityEnum.High">
+            {{PriorityEnum[PriorityEnum.High]}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <footer class="dialog-footer">
+      <button mat-stroked-button mat-dialog-close>Close</button>
+      <button mat-flat-button [disabled]="!data.formGroup.valid" [mat-dialog-close]="data.formGroup.value">Submit</button>
+    </footer>
+  </form>
+</div>

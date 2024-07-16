@@ -1,0 +1,492 @@
+{
+  "events": [
+    {
+      "id": "a96c",
+      "title": "Annual Science Fair",
+      "description": "Join us for a day of scientific exploration and discovery with exhibits from local students.",
+      "date": "2023-05-31T21:00:00.000Z",
+      "priority": 1,
+      "status": 1
+    },
+    {
+      "id": "ccf8",
+      "title": "Summer Music Festival",
+      "description": "Enjoy live performances from various bands and artists in a fun outdoor setting.",
+      "date": "2023-07-02T21:00:00.000Z",
+      "priority": 2,
+      "status": 1
+    },
+    {
+      "id": "55b2",
+      "title": "Art Exhibition: Modern Perspectives",
+      "description": "Explore contemporary artworks by emerging and established artists.",
+      "date": "2023-06-30T21:00:00.000Z",
+      "priority": 0,
+      "status": 1
+    },
+    {
+      "id": "6966",
+      "title": "Community Yoga Day",
+      "description": "Relax and rejuvenate with free yoga sessions for all skill levels in the park.",
+      "date": "2023-07-09T21:00:00.000Z",
+      "priority": 1,
+      "status": 1
+    },
+    {
+      "id": "ef62",
+      "title": "Tech Innovators Conference",
+      "description": "Hear from industry leaders about the latest trends and innovations in technology.",
+      "date": "2023-07-15T21:00:00.000Z",
+      "priority": 1,
+      "status": 1
+    },
+    {
+      "id": "1f0c",
+      "title": "Food Truck Fiesta",
+      "description": "Savor a variety of delicious dishes from the best local food trucks.",
+      "date": "2023-07-23T21:00:00.000Z",
+      "priority": 0,
+      "status": 1
+    },
+    {
+      "id": "f5db",
+      "title": "Historical Walking Tour",
+      "description": "Discover the rich history of our city with a guided walking tour.",
+      "date": "2023-07-23T21:00:00.000Z",
+      "priority": 1,
+      "status": 1
+    },
+    {
+      "id": "4ad7",
+      "title": "Children's Book Festival",
+      "description": "Meet your favorite authors and enjoy storytelling sessions and activities for kids.",
+      "date": "2023-07-16T21:00:00.000Z",
+      "priority": 0,
+      "status": 1
+    },
+    {
+      "id": "8e2f",
+      "title": "Charity Fun Run",
+      "description": "Participate in a 5K run to support a local charity. All fitness levels welcome.",
+      "date": "2023-07-27T21:00:00.000Z",
+      "priority": 2,
+      "status": 1
+    },
+    {
+      "id": "558a",
+      "title": "Film Screening: Classic Movies",
+      "description": "Watch classic films on the big screen with fellow movie enthusiasts.",
+      "date": "2023-08-07T21:00:00.000Z",
+      "priority": 1,
+      "status": 1
+    },
+    {
+      "id": "872f",
+      "title": "Craft Beer Tasting",
+      "description": "Sample a selection of craft beers from local breweries.",
+      "date": "2023-10-16T21:00:00.000Z",
+      "priority": 2,
+      "status": 1
+    },
+    {
+      "id": "3a6f",
+      "title": "Farmers Market",
+      "description": "Buy fresh produce, baked goods, and handmade crafts from local vendors.",
+      "date": "2023-08-16T21:00:00.000Z",
+      "priority": 1,
+      "status": 1
+    },
+    {
+      "id": "ee50",
+      "title": "Photography Workshop",
+      "description": "Improve your photography skills with tips and techniques from a professional photographer.",
+      "date": "2023-08-17T21:00:00.000Z",
+      "priority": 1,
+      "status": 1
+    },
+    {
+      "id": "7ee2",
+      "title": "Gardening Seminar",
+      "description": "Learn how to start and maintain your own garden with expert advice.",
+      "date": "2023-08-01T21:00:00.000Z",
+      "priority": 0,
+      "status": 1
+    },
+    {
+      "id": "570f",
+      "title": "Tech Startup Pitch Night",
+      "description": "Watch as local startups pitch their ideas to a panel of investors.",
+      "date": "2023-07-22T21:00:00.000Z",
+      "priority": 1,
+      "status": 1
+    },
+    {
+      "id": "05c7",
+      "title": "Cooking Class: Italian Cuisine",
+      "description": "Learn how to make delicious Italian dishes with a professional chef.",
+      "date": "2023-08-29T21:00:00.000Z",
+      "priority": 1,
+      "status": 1
+    },
+    {
+      "id": "9583",
+      "title": "Jazz Night",
+      "description": "Enjoy a night of smooth jazz music at a local venue.",
+      "date": "2023-11-01T21:00:00.000Z",
+      "priority": 2,
+      "status": 1
+    },
+    {
+      "id": "9a0a",
+      "title": "Holiday Craft Fair",
+      "description": "Find unique handmade gifts and decorations for the holiday season.",
+      "date": "2023-10-01T21:00:00.000Z",
+      "priority": 0,
+      "status": 1
+    },
+    {
+      "id": "8395",
+      "title": "Beach Cleanup Day",
+      "description": "Help keep our beaches clean by participating in a community cleanup event.",
+      "date": "2023-09-28T21:00:00.000Z",
+      "priority": 1,
+      "status": 1
+    },
+    {
+      "id": "eced",
+      "title": "Health and Wellness Expo",
+      "description": "Discover new ways to improve your health and wellness with various exhibitors.",
+      "date": "2023-11-30T21:00:00.000Z",
+      "priority": 2,
+      "status": 1
+    },
+    {
+      "id": "996c",
+      "title": "Pet Adoption Event",
+      "description": "Meet adorable pets looking for their forever homes.",
+      "date": "2024-01-09T21:00:00.000Z",
+      "priority": 1,
+      "status": 1
+    },
+    {
+      "id": "5044",
+      "title": "Wine Tasting Evening",
+      "description": "Sample fine wines from around the world with a knowledgeable sommelier.",
+      "date": "2024-05-09T21:00:00.000Z",
+      "priority": 1,
+      "status": 1
+    },
+    {
+      "id": "3fad",
+      "title": "Local Theater Production: Shakespeare",
+      "description": "Enjoy a performance of a classic Shakespearean play by a local theater group.",
+      "date": "2024-02-11T21:00:00.000Z",
+      "priority": 1,
+      "status": 1
+    },
+    {
+      "id": "c997",
+      "title": "Fitness Boot Camp",
+      "description": "Get in shape with a high-energy boot camp workout session.",
+      "date": "2024-06-14T21:00:00.000Z",
+      "priority": 2,
+      "status": 1
+    },
+    {
+      "id": "679b",
+      "title": "Astronomy Night",
+      "description": "Gaze at the stars and learn about astronomy with telescopes and experts.",
+      "date": "2024-08-16T21:00:00.000Z",
+      "priority": 2,
+      "status": 0
+    },
+    {
+      "id": "d9ce",
+      "title": "Networking Mixer for Professionals",
+      "description": "Connect with other professionals in your industry at this networking event.",
+      "date": "2024-04-09T21:00:00.000Z",
+      "priority": 1,
+      "status": 1
+    },
+    {
+      "id": "7807",
+      "title": "Poetry Reading",
+      "description": "Listen to readings from local poets and share your own work in an open mic session.",
+      "date": "2024-03-18T21:00:00.000Z",
+      "priority": 1,
+      "status": 1
+    },
+    {
+      "id": "d925",
+      "title": "Chess Tournament",
+      "description": "Compete against other chess enthusiasts in a friendly tournament.",
+      "date": "2024-06-01T21:00:00.000Z",
+      "priority": 2,
+      "status": 1
+    },
+    {
+      "id": "fd15",
+      "title": "Environmental Awareness Seminar",
+      "description": "Learn about environmental issues and how you can make a difference.",
+      "date": "2024-05-20T21:00:00.000Z",
+      "priority": 1,
+      "status": 1
+    },
+    {
+      "id": "130c",
+      "title": "Comedy Night",
+      "description": "Enjoy a night of laughter with performances from stand-up comedians.",
+      "date": "2024-06-30T21:00:00.000Z",
+      "priority": 1,
+      "status": 1
+    },
+    {
+      "id": "bd29",
+      "title": "DIY Home Improvement Workshop",
+      "description": "Learn how to tackle home improvement projects with expert guidance.",
+      "date": "2024-06-25T21:00:00.000Z",
+      "priority": 1,
+      "status": 1
+    },
+    {
+      "id": "2fc8",
+      "title": "Community Potluck Picnic",
+      "description": "Share your favorite dishes and enjoy a meal with neighbors and friends.",
+      "date": "2024-07-19T21:00:00.000Z",
+      "priority": 2,
+      "status": 0
+    },
+    {
+      "id": "bdde",
+      "title": "Ballet Performance",
+      "description": "Experience the beauty of ballet with a performance by a local dance company.",
+      "date": "2024-07-20T21:00:00.000Z",
+      "priority": 1,
+      "status": 0
+    },
+    {
+      "id": "58a5",
+      "title": "Resume Writing Workshop",
+      "description": "Get tips on how to create a standout resume from career professionals.",
+      "date": "2024-07-31T21:00:00.000Z",
+      "priority": 1,
+      "status": 0
+    },
+    {
+      "id": "962b",
+      "title": "Classic Car Show",
+      "description": "Admire a collection of classic cars and meet their owners.",
+      "date": "2024-08-03T21:00:00.000Z",
+      "priority": 1,
+      "status": 0
+    },
+    {
+      "id": "5716",
+      "title": "Book Club Meeting",
+      "description": "Discuss the latest book selection with fellow book lovers.",
+      "date": "2024-10-15T21:00:00.000Z",
+      "priority": 1,
+      "status": 0
+    },
+    {
+      "id": "7349",
+      "title": "Public Speaking Seminar",
+      "description": "Improve your public speaking skills with practical exercises and feedback.",
+      "date": "2024-09-09T21:00:00.000Z",
+      "priority": 2,
+      "status": 0
+    },
+    {
+      "id": "18d4",
+      "title": "Science Fiction Convention",
+      "description": "Celebrate all things sci-fi with panels, cosplay, and merchandise.",
+      "date": "2024-10-20T21:00:00.000Z",
+      "priority": 0,
+      "status": 0
+    },
+    {
+      "id": "d825",
+      "title": "Local Band Showcase",
+      "description": "Discover new music and support local bands at this showcase event.",
+      "date": "2024-09-29T21:00:00.000Z",
+      "priority": 0,
+      "status": 0
+    },
+    {
+      "id": "e613",
+      "title": "Bird Watching Tour",
+      "description": "oin a guided tour to spot and learn about local bird species.",
+      "date": "2024-10-08T21:00:00.000Z",
+      "priority": 2,
+      "status": 0
+    },
+    {
+      "id": "c3c9",
+      "title": "Career Fair",
+      "description": "Meet with potential employers and explore job opportunities in various fields.",
+      "date": "2024-11-02T21:00:00.000Z",
+      "priority": 1,
+      "status": 0
+    },
+    {
+      "id": "b210",
+      "title": "Outdoor Adventure Camp",
+      "description": "Enjoy a weekend of hiking, camping, and outdoor activities.",
+      "date": "2024-09-24T21:00:00.000Z",
+      "priority": 2,
+      "status": 0
+    },
+    {
+      "id": "dcad",
+      "title": "Volunteer Appreciation Dinner",
+      "description": "Celebrate the hard work of volunteers with a special dinner event.",
+      "date": "2024-10-29T21:00:00.000Z",
+      "priority": 1,
+      "status": 0
+    },
+    {
+      "id": "9480",
+      "title": "Meditation Workshop",
+      "description": "Learn techniques to reduce stress and improve mindfulness through meditation.",
+      "date": "2024-12-16T21:00:00.000Z",
+      "priority": 1,
+      "status": 0
+    },
+    {
+      "id": "dee5",
+      "title": "Salsa Dancing Night",
+      "description": "Dance the night away with lively salsa music and lessons for beginners.",
+      "date": "2024-10-22T21:00:00.000Z",
+      "priority": 1,
+      "status": 0
+    },
+    {
+      "id": "f5db",
+      "title": "Local Author Book Signing",
+      "description": "Meet local authors and get your books signed at this special event.",
+      "date": "2024-11-09T21:00:00.000Z",
+      "priority": 2,
+      "status": 0
+    },
+    {
+      "id": "c451",
+      "title": "Model Train Exhibit",
+      "description": "Marvel at intricate model train displays and learn about the hobby.",
+      "date": "2024-10-15T21:00:00.000Z",
+      "priority": 0,
+      "status": 0
+    },
+    {
+      "id": "839c",
+      "title": "Cooking Competition",
+      "description": "Show off your culinary skills in a friendly cooking competition.",
+      "date": "2024-10-26T21:00:00.000Z",
+      "priority": 1,
+      "status": 0
+    },
+    {
+      "id": "57a1",
+      "title": "Virtual Reality Experience",
+      "description": "Try out the latest VR technology and immerse yourself in virtual worlds.",
+      "date": "2024-09-04T21:00:00.000Z",
+      "priority": 0,
+      "status": 0
+    },
+    {
+      "id": "980a",
+      "title": "Dog Obedience Training",
+      "description": "Learn how to train your dog with professional tips and demonstrations.",
+      "date": "2024-08-10T21:00:00.000Z",
+      "priority": 1,
+      "status": 0
+    },
+    {
+      "id": "6b32",
+      "title": "Film Festival: Independent Movies",
+      "description": "Watch and support independent films from up-and-coming filmmakers.",
+      "date": "2025-02-17T21:00:00.000Z",
+      "priority": 2,
+      "status": 0
+    },
+    {
+      "id": "c413",
+      "title": "Community Garden Planting Day",
+      "description": "Help plant and maintain a community garden with your neighbors.",
+      "date": "2024-11-17T21:00:00.000Z",
+      "priority": 2,
+      "status": 0
+    },
+    {
+      "id": "8451",
+      "title": "Bookbinding Workshop",
+      "description": "Learn the art of bookbinding and create your own handmade books.",
+      "date": "2025-01-07T21:00:00.000Z",
+      "priority": 0,
+      "status": 0
+    },
+    {
+      "id": "2a13",
+      "title": "Outdoor Movie Night",
+      "description": "Enjoy a classic movie under the stars with family and friends.",
+      "date": "2024-07-30T21:00:00.000Z",
+      "priority": 2,
+      "status": 0
+    },
+    {
+      "id": "9a8b",
+      "title": "Job Interview Skills Workshop",
+      "description": "Get tips on how to ace job interviews with mock interview sessions.",
+      "date": "2024-10-12T21:00:00.000Z",
+      "priority": 0,
+      "status": 0
+    },
+    {
+      "id": "bbad",
+      "title": "Antique Fair",
+      "description": "Browse and purchase unique antiques and vintage items from local sellers.",
+      "date": "2024-11-18T21:00:00.000Z",
+      "priority": 0,
+      "status": 0
+    },
+    {
+      "id": "6774",
+      "title": "Charity Gala",
+      "description": "Dress up and enjoy an elegant evening to support a local cause.",
+      "date": "2025-02-23T21:00:00.000Z",
+      "priority": 1,
+      "status": 0
+    },
+    {
+      "id": "0f72",
+      "title": "Language Exchange Meetup",
+      "description": "Practice speaking different languages with native speakers in a casual setting.",
+      "date": "2024-09-16T21:00:00.000Z",
+      "priority": 1,
+      "status": 0
+    },
+    {
+      "id": "2190",
+      "title": "Martial Arts Demonstration",
+      "description": "Watch and learn about various martial arts styles from expert practitioners.",
+      "date": "2024-10-05T21:00:00.000Z",
+      "priority": 0,
+      "status": 0
+    },
+    {
+      "id": "acab",
+      "title": "Origami Workshop",
+      "description": "Discover the art of paper folding and create your own origami masterpieces.",
+      "date": "2024-07-20T21:00:00.000Z",
+      "priority": 0,
+      "status": 0
+    },
+    {
+      "id": "26b6",
+      "title": "Pepega Frog Pool Party",
+      "description": "Dive into the fun at our Pepega Frog Pool Party! Enjoy a day of swimming, games, and laughter with friends and family. Featuring poolside music, delicious snacks, and Pepega-themed decorations, this event promises to be a splash! Don't forget your swimwear and sunscreen!",
+      "date": "2024-07-31T21:00:00.000Z",
+      "priority": 2,
+      "status": 0
+    }
+  ]
+}

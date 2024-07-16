@@ -1,0 +1,30 @@
+.card-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.card {
+  max-width: 80%;
+  min-width: 40%;
+}
+
+.card-form {
+  display: grid;
+  grid-template-columns: auto;
+  gap: 16px;
+}
+
+.card-form-footer {
+  display: flex;
+  justify-content: end;
+  gap: 16px;
+}
+
+.card-header {
+  padding-bottom: 8px;
+}
+
+.card-footer {
+  padding: 16px;
+}

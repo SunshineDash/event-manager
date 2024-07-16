@@ -1,18 +1,29 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { EffectsModule} from '@ngrx/effects';
+import { NgModule } from '@angular/core';
+import { provideHttpClient } from '@angular/common/http';
+import { StoreModule} from '@ngrx/store';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
+import { EventEffects } from './core/store/event.effects';
+import { EventModule } from './event-view/event.module';
+import { eventReducer } from './core/store/event.reducer';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
-    AppRoutingModule
+    EventModule,
+    EffectsModule.forRoot([EventEffects]),
+    StoreModule.forRoot({events: eventReducer})
   ],
-  providers: [],
+  providers: [
+    provideHttpClient()
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
