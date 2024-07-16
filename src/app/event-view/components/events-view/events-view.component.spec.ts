@@ -123,7 +123,7 @@ describe('EventsViewComponent', () => {
   it('should open CreateEventDialogComponent on create call', () => {
     const dialogRef = {
       afterClosed: () => of(mockEvent)
-    } as MatDialogRef<CreateEventDialogComponent, any>;
+    } as MatDialogRef<CreateEventDialogComponent>;
     mockDialog.open.and.returnValue(dialogRef);
 
     component.create();
@@ -132,7 +132,7 @@ describe('EventsViewComponent', () => {
       data: jasmine.any(Object)
     });
 
-    dialogRef.afterClosed().subscribe((result: EventModel) => {
+    dialogRef.afterClosed().subscribe(() => {
       expect(store.dispatch).toHaveBeenCalledWith(EventActions.createEvent({
         event: mockEvent,
         pageIndex: 0,

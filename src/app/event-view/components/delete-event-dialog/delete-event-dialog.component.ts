@@ -10,7 +10,6 @@ import { RECORDS_PER_PAGE } from '../../../core/constants/records-per-page.const
 @Component({
   selector: 'app-delete-event-dialog',
   templateUrl: './delete-event-dialog.component.html',
-  styleUrl: './delete-event-dialog.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DeleteEventDialogComponent {

@@ -61,7 +61,6 @@ export class EventDetailsComponent implements OnInit {
 
   onSubmit(): void {
     this.store.dispatch(EventActions.updateEvent({ event: this.formGroup.value as EventModel }));
-    this.formGroup.markAsPristine();
     this.switchMode();
   }
 
@@ -71,6 +70,7 @@ export class EventDetailsComponent implements OnInit {
   }
 
   cleanForm(): void {
+    this.formGroup.markAsPristine();
     if (!this.isEditMode) {
       this.formGroup.controls.id.setValue(this.event.id);
       this.formGroup.controls.title.setValue(this.event.title);

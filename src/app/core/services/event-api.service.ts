@@ -22,23 +22,23 @@ export class EventApiService {
   ): Observable<PaginationResponseInterface<EventModel[]>> {
     const searchParams= new URLSearchParams();
 
-    if (!!pageIndex) {
+    if (pageIndex) {
       searchParams.append('_page', pageIndex.toString());
     }
 
-    if (!!recordsPerPage) {
+    if (recordsPerPage) {
       searchParams.append('_per_page', recordsPerPage.toString());
     }
 
-    if (!!titleSearch) {
+    if (titleSearch) {
       searchParams.append('title', titleSearch);
     }
 
-    if (!!statusFilter) {
+    if (statusFilter) {
       searchParams.append('status', statusFilter);
     }
 
-    if (!!sort) {
+    if (sort) {
       searchParams.append('_sort', sort);
     }
 

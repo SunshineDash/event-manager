@@ -7,7 +7,7 @@ describe('EventReducer', () => {
   const initialState: EventState = defaultEventState;
 
   it('should return the default state', () => {
-    const action = {} as any;
+    const action = EventActions.getEvent({ id: 0 });
 
     const state = eventReducer(initialState, action);
 

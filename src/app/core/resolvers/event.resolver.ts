@@ -12,7 +12,7 @@ import { EventState } from '../store/event.reducer';
 @Injectable({
   providedIn: 'root'
 })
-export class EventResolverService implements Resolve<any> {
+export class EventResolverService implements Resolve<Observable<EventModel>|boolean> {
   constructor(
     private apiService: EventApiService,
     private destroyRef: DestroyRef,

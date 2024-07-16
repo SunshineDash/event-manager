@@ -17,7 +17,6 @@ describe('EventDetailsComponent', () => {
   let component: EventDetailsComponent;
   let fixture: ComponentFixture<EventDetailsComponent>;
   let store: MockStore<EventState>;
-  let cdr: ChangeDetectorRef;
 
   const mockEvent = new EventModel({
     id: '1',
@@ -60,7 +59,6 @@ describe('EventDetailsComponent', () => {
     component = fixture.componentInstance;
 
     store = TestBed.inject(Store) as MockStore<EventState>;
-    cdr = TestBed.inject(ChangeDetectorRef);
     store.overrideSelector(selectDetailsEvent, mockEvent);
 
     fixture.detectChanges();
